@@ -1,4 +1,0 @@
-toadbooth
-=========
-
-photobooth for Toadmansion
