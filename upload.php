@@ -13,6 +13,7 @@ if (isset($_POST['image'])) {
     $data = base64_decode($img);
     $file = UPLOAD_DIR . uniqid() . '.png';
     $success = file_put_contents($file, $data);
+    date_default_timezone_set('America/Chicago');
     $title = date('l F jS Y h:i:s A');
 
     $content = '<img src="toadbooth/'.$file.'">';
