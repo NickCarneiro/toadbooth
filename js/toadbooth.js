@@ -105,7 +105,7 @@ function uploadImages() {
     var image = $('#image');
     var data = {
         image: $(image).attr('src'),
-        secret_token: window['secret_token']
+        secret_token: window['secretToken']
     };
     var settings = {
         url: "upload.php",
