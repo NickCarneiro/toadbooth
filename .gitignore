@@ -1,2 +1,4 @@
 images/
 .idea
+config.php
+.DS_Store

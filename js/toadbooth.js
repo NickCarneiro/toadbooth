@@ -6,7 +6,7 @@ $(function () {
         cover = document.querySelector('#cover'),
         canvas = document.querySelector('#canvas'),
         photo = document.querySelector('#photo'),
-        width = 702,
+        width = 1440,
         height = 0;
 
     navigator.getMedia = ( navigator.getUserMedia ||
@@ -86,13 +86,14 @@ $(function () {
         initializeBooth();
     });
 
-
+    initializeBooth();
 
 });
 
 
 function initializeBooth() {
     $('#retry-button').hide();
+    $('#save-button').hide();
     $('#shutter-button').attr('disabled', false);
     $('#image').hide();
     $('#video').show();
@@ -115,10 +116,9 @@ function uploadImages() {
     $.ajax(settings);
 
     function uploadComplete(res) {
-        $('#error-message').text('Upload complete.');
-        if (res['gif_url']) {
-            $('#error-message').append(' <a href="' + res['gif_url'] + '">View Image</a>');
-            // all the uploads worked. reinitialize
+        var response = JSON.parse(res);
+        $('#error-message').text('Upload complete. ' + response.url);
+        if (response['url']) {
             initializeBooth();
         }
     }

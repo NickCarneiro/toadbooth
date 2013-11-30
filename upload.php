@@ -1,4 +1,6 @@
 <?php
+require('config.php');
+require($wordpress_path.'/wp-load.php');
 define('UPLOAD_DIR', 'images/');
 if (isset($_POST['image'])) {
     $img = $_POST['image'];
@@ -7,6 +9,17 @@ if (isset($_POST['image'])) {
     $data = base64_decode($img);
     $file = UPLOAD_DIR . uniqid() . '.png';
     $success = file_put_contents($file, $data);
-    print $success ? $file : 'Unable to save the file.';
+    $title = date('l F jS Y h:i:s A');
+
+    $content = '<img src="toadbooth/'.$file.'">';
+    $post = array(
+        'post_title' => $title,
+        'post_content' => $content,
+        'post_author' => 1,
+        'post_status' => 'publish'
+
+    );
+    $post_id = wp_insert_post($post);
+    echo '{"file": "'.$file.'", "url": "/?p='.$post_id.'"}';
 }
 ?>
