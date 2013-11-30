@@ -104,7 +104,8 @@ function uploadImages() {
     $('#retry-button').attr('disabled', true);
     var image = $('#image');
     var data = {
-        image: $(image).attr('src')
+        image: $(image).attr('src'),
+        secret_token: window['secret_token']
     };
     var settings = {
         url: "upload.php",

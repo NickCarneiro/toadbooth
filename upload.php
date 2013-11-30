@@ -3,6 +3,10 @@ require('config.php');
 require($wordpress_path.'/wp-load.php');
 define('UPLOAD_DIR', 'images/');
 if (isset($_POST['image'])) {
+    if ($_POST['token'] != $secret_token) {
+        echo '{"error": "unauthorized"}';
+        return;
+    }
     $img = $_POST['image'];
     $img = str_replace('data:image/png;base64,', '', $img);
     $img = str_replace(' ', '+', $img);

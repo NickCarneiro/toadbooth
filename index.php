@@ -6,7 +6,12 @@
     <title>upload a photo</title>
     <link rel="stylesheet" href="css/toadbooth.css" />
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
-
+    <script>
+        <?php
+        require('config.php');
+        echo('var secretToken = "'.$secret_token.'";');
+        ?>
+    </script>
 </head>
 <body>
 
