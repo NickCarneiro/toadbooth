@@ -114,6 +114,7 @@ function uploadImages() {
         success: uploadComplete,
         error: uploadError
     };
+    $('#error-message').text('Uploading...');
     $.ajax(settings);
 
     function uploadComplete(res) {
