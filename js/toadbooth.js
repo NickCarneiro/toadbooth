@@ -119,7 +119,11 @@ function uploadImages() {
 
     function uploadComplete(res) {
         var response = JSON.parse(res);
-        $('#error-message').text('Upload complete. ' + response.url);
+        if (response.error) {
+            $('#error-message').text(response.error);
+        } else {
+            $('#error-message').text('Upload complete. ' + response.url);
+        }
         if (response['url']) {
             initializeBooth();
         }
