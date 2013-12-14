@@ -1,8 +1,7 @@
 <?php
 require('config.php');
 require($wordpress_path.'/wp-load.php');
-define('UPLOAD_DIR', 'images/');
-$handle = opendir('gifs/');
+$handle = opendir('./gifs/');
 if ($handle = opendir('.')) {
     while (false !== ($entry = readdir($handle))) {
         if ($entry != "." && $entry != "..") {
